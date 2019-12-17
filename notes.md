@@ -17,7 +17,8 @@ All items have:
         Past concert date => Quality value == 0
 
 
-Task: add a new feature to the system so they can sell a new category of item ("Conjured items").
+**Task:**
+Add a new feature to the system so they can sell a new category of item ("Conjured items").
 Properties of Conjured items:
   * Quality value degrades twice as quickly as normal items
 
