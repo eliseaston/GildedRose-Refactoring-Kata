@@ -8,7 +8,7 @@ describe GildedRose do
   let(:backstage1) { Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 10) }
   let(:backstage2) { Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 10) }
   let(:backstage3) { Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 10) }
-  let(:cake) { Item.new("chocolate cake", 3, 10) }
+  let(:cake) { Item.new("chocolate cake", 1, 10) }
 
   let(:items) { [brie, backstage1, backstage2, backstage3, cake] }
 
@@ -20,8 +20,15 @@ describe GildedRose do
 
       it 'decreases the sell-in and quality value of a normal item by 1' do
         gilded_rose.update_quality
-        expect(gilded_rose.items[4].sell_in).to eq(2)
+        expect(gilded_rose.items[4].sell_in).to eq(0)
         expect(gilded_rose.items[4].quality).to eq(9)
+      end
+
+      it 'decreases the quality value of a normal item twice as much after sell in date' do
+        gilded_rose.update_quality
+        gilded_rose.update_quality
+        expect(gilded_rose.items[4].sell_in).to eq(-1)
+        expect(gilded_rose.items[4].quality).to eq(7)
       end
 
       it 'decreases the sell-in and increases the quality value of brie' do
