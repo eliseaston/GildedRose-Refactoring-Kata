@@ -14,10 +14,20 @@ describe GildedRose do
 
   describe "#update_quality" do
 
-    it 'decreases the sell-in and quality value of a normal item by 1' do
-      gilded_rose.update_quality
-      expect(gilded_rose.items[2].sell_in).to eq(2)
-      expect(gilded_rose.items[2].quality).to eq(9)
+    context 'check existing code works' do
+
+      it 'decreases the sell-in and quality value of a normal item by 1' do
+        gilded_rose.update_quality
+        expect(gilded_rose.items[2].sell_in).to eq(2)
+        expect(gilded_rose.items[2].quality).to eq(9)
+      end
+
+      it 'decreases the sell-in and increases the quality value of brie' do
+        gilded_rose.update_quality
+        expect(gilded_rose.items[0].sell_in).to eq(4)
+        expect(gilded_rose.items[0].quality).to eq(21)
+      end
+
     end
 
   end
