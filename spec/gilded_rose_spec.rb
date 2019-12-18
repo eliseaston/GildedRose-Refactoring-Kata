@@ -9,8 +9,9 @@ describe GildedRose do
   let(:backstage2) { Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 10) }
   let(:backstage3) { Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 10) }
   let(:cake) { Item.new("chocolate cake", 1, 10) }
+  let(:sulfuras) { Item.new("Sulfuras, Hand of Ragnaros", 0, 80) }
 
-  let(:items) { [brie, backstage1, backstage2, backstage3, cake] }
+  let(:items) { [brie, backstage1, backstage2, backstage3, cake, sulfuras] }
 
   let(:gilded_rose) { described_class.new(items) }
 
@@ -53,6 +54,12 @@ describe GildedRose do
         gilded_rose.update_quality
         expect(gilded_rose.items[3].sell_in).to eq(-1)
         expect(gilded_rose.items[3].quality).to eq(0)
+      end
+
+      it 'does not decrease the sell-in or quality values of Sulfuras' do
+        gilded_rose.update_quality
+        expect(gilded_rose.items[5].sell_in).to eq(0)
+        expect(gilded_rose.items[5].quality).to eq(80)
       end
 
     end
