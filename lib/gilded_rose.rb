@@ -56,11 +56,8 @@ class GildedRose
   end
 
   def check_limits(item)
-    if item.quality > MAX_VALUE
-      item.quality = MAX_VALUE
-    elsif item.quality < MIN_VALUE
-      item.quality = MIN_VALUE
-    end
+    item.quality = MAX_VALUE if item.quality > MAX_VALUE
+    item.quality = MIN_VALUE if item.quality < MIN_VALUE
   end
 
 end
