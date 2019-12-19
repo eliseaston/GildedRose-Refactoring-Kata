@@ -47,3 +47,8 @@ Once I was confident the code worked and the tests passed, I started to refactor
 * I refactored the maximum and minimum quality values as Constants on lines 3 and 4. If these values change at all in future, this will make it easier to update the code.
 
 Once I was happy with the refactoring of my code, I TDD adding a new 'Conjured Items' feature. I wrote tests to check that the quality value of a Conjured Item would reduce by 2 before its sell-by date, and by 4 afterwards. I then used my failing tests to add the code to the switch statement, and also a `update_conjured` method, to make the tests pass.
+
+
+**Next steps**
+
+I am dissatsfied that my tests are testing the state of the items, rather than the behaviour. I would have preferred to at least write getter/setter methods in the `Item` class, rather than access the `.quality` and `.sell_in` properties directly. However, given that the instructions clearly state **not** to edit the `Item` class, this was not possible. Due to this, I also struggled to mock in my tests, and instead have had to resort to using real `Item` objects.
