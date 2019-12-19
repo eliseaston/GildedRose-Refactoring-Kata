@@ -17,6 +17,8 @@ class GildedRose
       when item.name.include?("Backstage")
         update_backstage(item)
       when item.name == "Sulfuras, Hand of Ragnaros"
+      when item.name == "Conjured item"
+        update_conjured(item)
       else
         update_item(item)
       end
@@ -43,6 +45,10 @@ class GildedRose
     else
       item.quality += 1
     end
+  end
+
+  def update_conjured(item)
+    item.sell_in > 0 ? item.quality -= 2 : item.quality -= 4
   end
 
   def update_item(item)
