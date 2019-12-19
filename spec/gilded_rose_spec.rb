@@ -18,6 +18,8 @@ describe GildedRose do
 
   describe "#update_quality" do
 
+    context 'normal items' do
+
       it 'decreases the sell-in and quality value of a normal item by 1' do
         gilded_rose.update_quality
         expect(gilded_rose.items[4].sell_in).to eq(0)
@@ -31,11 +33,29 @@ describe GildedRose do
         expect(gilded_rose.items[4].quality).to eq(7)
       end
 
+      it 'does not decrease the quality value of an item wih 0 value' do
+        gilded_rose.update_quality
+        expect(gilded_rose.items[7].quality).to eq(0)
+      end
+
+    end
+
+    context 'brie' do
+
       it 'decreases the sell-in and increases the quality value of brie' do
         gilded_rose.update_quality
         expect(gilded_rose.items[0].sell_in).to eq(4)
         expect(gilded_rose.items[0].quality).to eq(21)
       end
+
+      it 'does not increase the quality value of brie with quality value of 50' do
+        gilded_rose.update_quality
+        expect(gilded_rose.items[6].quality).to eq(50)
+      end
+
+    end
+
+    context 'backstage passes' do
 
       it 'decreases the sell-in and increases by 2 the quality of backstage pass less than 10 days before gig' do
         gilded_rose.update_quality
@@ -55,22 +75,17 @@ describe GildedRose do
         expect(gilded_rose.items[3].quality).to eq(0)
       end
 
+    end
+
+    context 'sulfuras' do
+
       it 'does not decrease the sell-in or quality values of Sulfuras' do
         gilded_rose.update_quality
         expect(gilded_rose.items[5].sell_in).to eq(0)
         expect(gilded_rose.items[5].quality).to eq(80)
       end
 
-      it 'does not increase the quality value of brie with quality value of 50' do
-        gilded_rose.update_quality
-        expect(gilded_rose.items[6].quality).to eq(50)
-      end
-
-      it 'does not decrease the quality value of an item wih 0 value' do
-        gilded_rose.update_quality
-        expect(gilded_rose.items[7].quality).to eq(0)
-      end
-
     end
 
   end
+end
