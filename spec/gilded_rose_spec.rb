@@ -18,21 +18,6 @@ describe GildedRose do
 
   let(:gilded_rose) { described_class.new(items) }
 
-    context 'brie' do
-
-      it 'decreases the sell-in and increases the quality value of brie' do
-        gilded_rose.update
-        expect(gilded_rose.items[0].sell_in).to eq(4)
-        expect(gilded_rose.items[0].quality).to eq(21)
-      end
-
-      it 'does not increase the quality value of brie with quality value of 50' do
-        gilded_rose.update
-        expect(gilded_rose.items[6].quality).to eq(50)
-      end
-
-    end
-
     context 'backstage passes' do
 
       it 'decreases the sell-in and increases by 2 the quality of backstage pass less than 10 days before gig' do

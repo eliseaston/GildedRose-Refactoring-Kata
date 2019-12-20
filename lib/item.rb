@@ -27,7 +27,6 @@ class BasicItem < Item
   end
 
   def check_limits
-    @quality = MAX_VALUE if @quality > MAX_VALUE
     @quality = MIN_VALUE if @quality < MIN_VALUE
   end
 end
@@ -68,7 +67,6 @@ class Brie < Item
 
   def check_limits
     @quality = MAX_VALUE if @quality > MAX_VALUE
-    @quality = MIN_VALUE if @quality < MIN_VALUE
   end
 end
 
