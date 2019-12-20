@@ -18,30 +18,6 @@ describe GildedRose do
 
   let(:gilded_rose) { described_class.new(items) }
 
-    context 'normal items' do
-
-      it 'decreases the sell-in and quality value of a normal item by 1' do
-        cake = Item.new("Cake", 5, 20)
-        # gilded_rose = GildedRose.new([cake])
-        gilded_rose.update
-        expect(gilded_rose.items[4].sell_in).to eq(0)
-        expect(gilded_rose.items[4].quality).to eq(9)
-      end
-
-      it 'decreases the quality value of a normal item twice as much after sell in date' do
-        gilded_rose.update
-        gilded_rose.update
-        expect(gilded_rose.items[4].sell_in).to eq(-1)
-        expect(gilded_rose.items[4].quality).to eq(7)
-      end
-
-      it 'does not decrease the quality value of an item wih 0 value' do
-        gilded_rose.update
-        expect(gilded_rose.items[7].quality).to eq(0)
-      end
-
-    end
-
     context 'brie' do
 
       it 'decreases the sell-in and increases the quality value of brie' do
