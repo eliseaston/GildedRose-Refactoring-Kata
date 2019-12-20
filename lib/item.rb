@@ -73,9 +73,11 @@ end
 
 class Sulfuras < Item
   def update_quality
+    @quality
   end
 
   def update_sell_in
+    @sell_in
   end
 
   def check_limits

@@ -47,4 +47,48 @@ describe Item do
 
   end
 
+  context 'Backstage passes' do
+
+    it 'decreases the backstage pass sell in value by 1' do
+      backstage_pass = BackstagePass.new("Backstage pass", 10, 10)
+      expect(backstage_pass.update_sell_in).to eq(9)
+    end
+
+    it 'increases the backstage pass quality value by 1 more than 10 days before the gig' do
+      longterm_backstage = BackstagePass.new("Backstage pass", 15, 10)
+      expect(longterm_backstage.update_quality).to eq(11)
+    end
+
+    it 'increases the backstage pass quality value by 2 less than 10 days before the gig' do
+      midterm_backstage = BackstagePass.new("Backstage pass", 9, 10)
+      expect(midterm_backstage.update_quality).to eq(12)
+    end
+
+    it 'increases the backstage pass quality value by 3 less than 5 days before the gig' do
+      shortterm_backstage = BackstagePass.new("Backstage pass", 3, 10)
+      expect(shortterm_backstage.update_quality).to eq(13)
+    end
+
+    it 'reduces the backstage pass quality value to 0 after the gig has passed' do
+      expired_backstage = BackstagePass.new("Backstage pass", 0, 10)
+      expect(expired_backstage.update_quality).to eq(0)
+    end
+
+  end
+
+  context 'Sulfuras' do
+
+    let(:sulfuras) { Sulfuras.new("Sulfuras, Hand of Ragnaros", nil, 80) }
+
+    it 'does not decrease the sell-in value of Sulfuras' do
+      expect(sulfuras.update_sell_in).to eq(nil)
+    end
+
+    it 'does not alter the quality value of Sulfuras' do
+      expect(sulfuras.update_quality).to eq(80)
+    end
+
+
+  end
+
 end
