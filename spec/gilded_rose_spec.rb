@@ -18,27 +18,4 @@ describe GildedRose do
 
   let(:gilded_rose) { described_class.new(items) }
 
-    context 'conjured items' do
-
-      it 'decreases conjured items quality value by 2 before sell-by date' do
-        gilded_rose.update
-        expect(gilded_rose.items[8].quality).to eq(8)
-      end
-
-      it 'decreases conjured items quality value by 4 after sell-by date' do
-        gilded_rose.update
-        expect(gilded_rose.items[9].quality).to eq(6)
-      end
-
-      it 'does not decrease conjured items value below 0' do
-        gilded_rose.update
-        gilded_rose.update
-        gilded_rose.update
-        gilded_rose.update
-        gilded_rose.update
-        expect(gilded_rose.items[9].quality).to eq(0)
-      end
-
-    end
-
 end

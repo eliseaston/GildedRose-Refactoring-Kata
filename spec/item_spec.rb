@@ -88,6 +88,30 @@ describe Item do
       expect(sulfuras.update_quality).to eq(80)
     end
 
+  end
+
+  context 'Conjured Items' do
+
+    it 'reduces conjured item sell-in value by 1' do
+      conjured = ConjuredItem.new("Conjured item", 5, 10)
+      expect(conjured.update_sell_in).to eq(4)
+    end
+
+    it 'reduces conjured item quality value by 2 before sell-by date' do
+      conjured = ConjuredItem.new("Conjured item", 5, 10)
+      expect(conjured.update_quality).to eq(8)
+    end
+
+    it 'reduces conjured item quality value by 4 after sell-by date' do
+      expired_conjured = ConjuredItem.new("Conjured item", 0, 10)
+      expect(expired_conjured.update_quality).to eq(6)
+    end
+
+    it 'does not decrease conjured item quality below 0' do
+      zero_conjured = ConjuredItem.new("Conjured item", 0, 2)
+      zero_conjured.update_quality
+      expect(zero_conjured.check_limits).to eq(0)
+    end
 
   end
 
