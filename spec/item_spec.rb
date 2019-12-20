@@ -18,6 +18,11 @@ describe Item do
       expect(basic_item.update_sell_in).to eq(4)
     end
 
+    it 'decreases basic item quality value by 2 after sell-by date' do
+      sell_by_basic_item = BasicItem.new("Stale cake", 0, 5)
+      expect(sell_by_basic_item.update_quality).to eq(3)
+    end
+
   end
 
 end
