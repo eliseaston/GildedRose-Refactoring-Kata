@@ -11,3 +11,32 @@ class Item
     "#{@name}, #{@sell_in}, #{@quality}"
   end
 end
+
+class BasicItem < Item
+  def update
+
+  end
+end
+
+class BackstagePass < Item
+  def update
+  end
+end
+
+class Brie < Item
+  def update
+
+  end
+end
+
+class Sulfuras < Item
+  def update
+
+  end
+end
+
+class ConjuredItem < Item
+  def update
+    
+  end
+end

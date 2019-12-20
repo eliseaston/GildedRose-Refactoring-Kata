@@ -21,9 +21,11 @@ describe GildedRose do
     context 'normal items' do
 
       it 'decreases the sell-in and quality value of a normal item by 1' do
-        gilded_rose.update_quality
-        expect(gilded_rose.items[4].sell_in).to eq(0)
-        expect(gilded_rose.items[4].quality).to eq(9)
+        cake = Item.new("Cake", 5, 20)
+        gilded_rose = GildedRose.new([cake])
+        expect(gilded_rose.update_quality).to eq("Cake, 4, 19")
+        # expect(gilded_rose.items[4].sell_in).to eq(0)
+        # expect(gilded_rose.items[4].quality).to eq(9)
       end
 
       it 'decreases the quality value of a normal item twice as much after sell in date' do

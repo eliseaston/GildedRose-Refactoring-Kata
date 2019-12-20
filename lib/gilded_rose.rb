@@ -1,3 +1,5 @@
+require_relative 'item'
+
 class GildedRose
 
   MIN_VALUE = 0
@@ -7,6 +9,10 @@ class GildedRose
 
   def initialize(items)
     @items = items
+  end
+
+  def update_quality
+    @items.each(&:update)
   end
 
   def update_quality
@@ -23,11 +29,16 @@ class GildedRose
         update_item(item)
       end
       unless item.name == "Sulfuras, Hand of Ragnaros"
-        item.sell_in -= 1
+        update_sellin(item)
         check_limits(item)
       end
     end
   end
+
+  def update_sellin(item)
+    item.sell_in -= 1
+  end
+
 
   private
 
