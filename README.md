@@ -31,9 +31,9 @@ I first made a [notes.md](notes.md) file to clarify the requirements of the prog
 
 I next wrote out the complex nested if statement from the legacy code, and colour-coded the if/else pairs to understand the structure of the code. [See here.](IMG_20191218_161405.jpg)
 
-I used this colour coded if statement to draw a flowchart of the codebase's logic:
-[Flowchart 1](IMG_20191218_161332.jpg)
-[Flowchart 2](IMG_20191218_161338.jpg)
+I used this colour coded if statement to draw a flowchart of the codebase's logic:<br>
+[Flowchart 1](IMG_20191218_161332.jpg)<br>
+[Flowchart 2](IMG_20191218_161338.jpg)<br>
 [Flowchart 3](IMG_20191218_161345.jpg)
 
 I then wanted to test that the existing code was functional. In the spec test file, I created one of each item from the task instructions (e.g. Aged Brie, Sulfuras, Backstage passes and ordinary item) and ran a series of tests to make sure that the `update_quality` method worked as expected for each item's requirements, which it did.
@@ -48,7 +48,8 @@ Once I was confident the code worked and the tests passed, I started to refactor
 
 Once I was happy with the refactoring of my code, I TDD adding a new 'Conjured Items' feature. I wrote tests to check that the quality value of a Conjured Item would reduce by 2 before its sell-by date, and by 4 afterwards. I then used my failing tests to add the code to the switch statement, and also a `update_conjured` method, to make the tests pass.
 
-After speaking with a coach, I then decided to further refactor. Instead of a switch statement, I used polymorphism, creating a subclass of the Item class for each type of item. Each subclass has a `.update_quality`, `.update_sell_in` and `.check_limits` method. The GildedRose class can then call an `.update` method, which will call each of the item methods. I think this approach is better, as each subclass is then responsible for its own requirements, and if further item categories are added in future, it will be easier to update the code.
+After speaking with a coach, I then decided to further refactor.
+Instead of a switch statement, I used polymorphism, creating a subclass of the Item class for each type of item. Each subclass has a `.update_quality`, `.update_sell_in` and `.check_limits` method. The GildedRose class can then call an `.update` method, which will call each of the item methods. I think this approach is better, as each subclass is then responsible for its own requirements, and if further item categories are added in future, it will be easier to update the code.
 
 
 **Next steps**
